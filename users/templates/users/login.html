@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <div class="flex justify-center">
+        <div class="p-[20px] bg-sky-200 border border border-sky-600 divide-x-[3px] divide-y-[3px] rounded-2xl mt-[200px]">
+              <form method="post" class="flex flex-col w-[500px] gap-[30px]" novalidate>
+            {% csrf_token %}
+            <h2 class="text-center text-[#211F54] text-[24px] font-bold">Log in to your account</h2>
+            {% for field in form %}
+                <div class="flex flex-col gap-[5px] text-[#211F54] text-[16px] font-medium">
+                    {{ field.label_tag }}
+                    {{ field }}
+                    {% if field.errors %}
+                        <span class="text-rose-500">{{ field.errors|striptags }}</span>
+                    {% endif %}
+                </div>
+            {% endfor %}
+
+                  <button type="submit" class="btn bg-sky-400 w-[100px] rounded-[10px] mx-auto text-[#211F54] text-[20px] font-bold">Login</button>
+        </form>
+        </div>
+    </div>
+</body>
+</html>

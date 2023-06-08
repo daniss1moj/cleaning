@@ -1,0 +1,130 @@
+{% extends 'services/base.html' %}
+{% load static %}
+
+{% block content %}
+<main>
+    <section class="services">
+        <div class="container">
+        <div style="display: flex; gap:40px; align-items: center; margin-bottom: 20px">
+               <h3 class="services__title">
+                Категории:
+            </h3>
+               <ul style="font-size: 25px;
+  display: flex;
+  gap: 10px;">
+                   {% for category in categories %}
+                       <li>
+                           <a href="{% url 'service' category_id=category.id %}">{{ category.name }}</a>
+                        </li>
+                   {% endfor %}
+                        <li>
+                           <a href="{% url 'services' %}">Все</a>
+                        </li>
+               </ul>
+        </div>
+            <h3 class="services__title">
+                Наши услуги:
+            </h3>
+            <div class="services__items">
+                {% for service in services %}
+                <div class="services__item">
+                    <div class="services__item-img">
+                        <img src="{{ service.image.url }}" alt="service1">
+                    </div>
+                    <span class="services__item-name">
+                        {{ service.name }}
+                    </span>
+                    <p class="services__item-descr">
+                        {{ service.description }}
+                    </p>
+                    <span class="services__item-price">Категория: <span>{{ service.category }}</span></span>
+
+                    <span class="services__item-price">Cтоимость: <span>{{ service.price }}$</span></span>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    <section class="request">
+        <div class="container request__container">
+            <div class="request__text">
+                <h4 class="request__title">Запросите бесплатное предложение по уборке сегодня</h4>
+                <div class="request__description">Оставьте свои данные и получите первую уборку бесплатно!</div>
+                <div class="request__phone">
+                    <div class="request__img">
+                        <img src="{% static 'img/icons/phone.svg' %}" alt="phone">
+                    </div>
+                    <div class="request__info">
+                        <span class="request__descr">звоните сейчас</span>
+                        <a href="tel:+4145672109" class="request__number">(414) 567 - 2109</a>
+                    </div>
+                </div>
+                <div class="request__img">
+                    <img src="{% static 'img/contacts.jpg' %}" alt="promo">
+                </div>
+            </div>
+            <form class="request__form" method="post" action="{% url 'application' %}">
+                {% csrf_token %}
+                <div class="request__input request__input-name">
+                    <label>
+                        Имя
+                        <input name="name" required type="text" >
+                    </label>
+                </div>
+                <div class="request__input request__input-phone">
+                    <label>
+                        Телефон
+                        <input name="phone" required type="tel" maxlength="10">
+                    </label>
+                </div>
+                <div class="request__input request__input-address">
+                    <label>
+                        Адрес
+                        <input name="address" type="text">
+                    </label>
+                </div>
+                <div class="request__input request__input-email">
+                    <label>
+                        Email
+                        <input name="email" required type="email">
+                    </label>
+                </div>
+                <div class="request__input">
+                    <label>
+                        Услуга:
+                     <select name="service" >
+                        {% for service in services %}
+                             <option value="{{ service.id }}"  >{{ service.name }}</option>
+                        {% endfor %}
+                    </select>
+                    </label>
+                </div>
+                <div class="request__input">
+                    <label>
+                        Дата
+                        <input required name="date" type="date" name="date">
+                    </label>
+                </div>
+                <div class="request__textarea">
+                    <label for="note">Сообщение (необязательное поле)</label>
+                    <textarea id="note" name="note"
+                        placeholder="Напишите детали о помещении в котором нужно сделать уборку."></textarea>
+                </div>
+                <button type="submit" class="btn btn_size_b request_btn">Отправить сообщение!</button>
+                <button type="button" class="btn btn_size_b clear_btn">Очистить форму</button>
+            </form>
+            <div class="modal">
+                <div class="modal-dialog">
+                    <div class="modal__close">&times;</div>
+                    <div class="modal-content">
+                        <p>Спасибо! <br> Ваша заявка отправлена!</p>
+                        <div class="modal__img">
+                            <img src="{% static 'img/icons/check.png' %}" alt="check">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock %}

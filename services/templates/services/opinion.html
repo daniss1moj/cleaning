@@ -1,0 +1,21 @@
+{% extends 'services/base.html' %}
+{% load static %}
+
+{% block content %}
+<main>
+    <section class="quiz">
+        <div class="container">
+            <div class="quiz-wrapper">
+                <h3 class="quiz__title">Опрос</h3>
+                <div class="question"></div>
+                <div class="answers-block">
+                    <div class="answers">
+                        <form></form>
+                    </div>
+                    <button class="answer-button btn btn_size_m" disabled>Продолжить</button>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock %}

@@ -1,0 +1,133 @@
+{% extends 'services/base.html' %}
+{% load static %}
+
+{% block content %}
+<main>
+    <section class="promo">
+        <div class="container">
+            <div class="promo__inner">
+                <h1 class="promo__title">
+                    Качественная уборка вашего дома
+                </h1>
+                <p class="promo__descr">
+                    Убираем там, где другим не по зубам!
+                </p>
+                <div class="promo__contact">
+                    <button class="promo__btn btn btn_size_b">Оставить заявку!</button>
+                    {% if is_show_phone %}
+                    <div class="promo__phone">
+                        <img src="{% static 'img/icons/phone.svg' %}" alt="phone" class="phone_img">
+                        <div class="promo__phone-info">
+                            <span class="phone__title">Звоните сейчас</span>
+                            <a href="tel:+4145672109" class="phone__number">(414) 567 - 2109</a>
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+                <div class="promo__img">
+                    <img src="{% static 'img/promo.jpg' %}" alt="promo">
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="conditions">
+        <div class="container">
+            <h2 class="conditions__title">Как работает наш сервис?</h2>
+            <span class="conditions__subtitle">Компания «Cleaning X» занимается уборкой любых помещений: от квартир
+                и домов до промышленных
+                предприятий и ТРЦ.</span>
+            <div class="conditions__items">
+                <div class="conditions__item">
+                    <div class="conditions__item-img">
+                        <img src="{% static 'img/condition1.svg' %}" alt="schedule">
+                    </div>
+                    <h3 class="conditions__header">1. Расписание онлайн</h3>
+                    <p class="conditions__subheader">Мы всегда ориентируемся на современные потребности заказчиков и
+                        высокие стандарты качества!</p>
+                </div>
+                <div class="conditions__item">
+                    <div class="conditions__item-img">
+                        <img src="{% static 'img/condition2.svg' %}" alt="pay online">
+                    </div>
+                    <h3 class="conditions__header">2. Платите онлайн легко</h3>
+                    <p class="conditions__subheader">Платите удобным для вас способом! <br> В числе наших
+                        сотрудников – опытные специалисты, способные выполнять работы любой степени сложности.</p>
+                </div>
+                <div class="conditions__item">
+                    <div class="conditions__item-img">
+                        <img src="{% static 'img/condtion3.svg' %}" alt="house Cleaning">
+                    </div>
+                    <h3 class="conditions__header">3. Приведите свой дом в порядок</h3>
+                    <p class="conditions__subheader">Уборка и дезинфекция всех разновидностей жилых, рабочих и
+                        складских помещений, открытых площадок;</p>
+                </div>
+            </div>
+            <button class="conditions__btn btn btn_size_b ">Оставить заявку!</button>
+        </div>
+    </section>
+    <section class="areas">
+        <div class="container areas__container">
+            <div class="areas__img">
+                <img src="{% static 'img/areas.svg' %}" alt="areas">
+            </div>
+            <div class="areas__inner">
+                <h4 class="areas__title">
+                    Мы охватываем все области вашего дома или офиса
+                </h4>
+                <p class="areas__descr">
+                    Уборка и дезинфекция всех разновидностей жилых, рабочих и складских помещений, открытых
+                    площадок;
+                </p>
+                <div class="areas__lists">
+                    <ul class="areas__list areas__list_first">
+                        <li class="areas__list-item">Кухни</li>
+                        <li class="areas__list-item">Гостинные</li>
+                        <li class="areas__list-item">Ковры</li>
+                        <li class="areas__list-item">Спальни</li>
+                    </ul>
+                    <ul class="areas__list areas__list_second">
+                        <li class="areas__list-item">Офисы</li>
+                        <li class="areas__list-item">Предприятия</li>
+                        <li class="areas__list-item">Автомобили</li>
+                        <li class="areas__list-item">Окна</li>
+                    </ul>
+
+                </div>
+                <button class="btn btn_size_m areas__btn">Оставить заявку!</button>
+            </div>
+        </div>
+    </section>
+    <section class="advantages">
+        <div class="container advantages__container">
+            <div class="advantages__inner">
+                <h4 class="advantages__title">
+                    Почему мы?
+                </h4>
+                <p class="advantages__descr">Воспользовавшись услугами нашей клининговой компании, вы получаете
+                    профессиональную и эффективную уборку любых помещений с применением безопасных средств и
+                    инструментов. Мы предлагаем удобные для вас условия сотрудничества, оперативное выполнение
+                    работы и всегда блестящий результат.</p>
+                <div class="advantages__items">
+                    <div class="advantages__item">
+                        <span class="advantages__item-number">10</span>
+                        <span class="advantages__item-property">Лет</span>
+                    </div>
+                    <div class="advantages__item">
+                        <span class="advantages__item-number">5т</span>
+                        <span class="advantages__item-property">Клиентов</span>
+                    </div>
+                    <div class="advantages__item">
+                        <span class="advantages__item-number">10т</span>
+                        <span class="advantages__item-property">Работ выполнено</span>
+                    </div>
+                </div>
+                <button class="advantages__btn btn btn_size_b">Оставить заявку!</button>
+            </div>
+            <div class="advantages__img">
+                <img src="{% static 'img/advantages.svg' %}" alt="advantages">
+            </div>
+            <div class="advantages__line"></div>
+        </div>
+    </section>
+</main>
+{% endblock %}

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>{{ title }}</title>
+</head>
+
+<body>
+    <header class="header">
+        <div class="container header__container">
+            <div class="header__nav nav">
+                <div class="header__logo"><a href="{% url 'index' %}"><img src="{% static 'img/logo.svg' %}"
+                            alt="logo"></a>
+                    <div class="header__name">Фирма бытовых услуг "Cleaning X"</div>
+                </div>
+                <ul class="nav__list">
+                    <li class="nav__item">
+                        <a href="{% url 'index' %}"
+                            class="nav__link {% if current_link == 0 %} nav__link_current {% endif %}">Главная</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="{% url 'opinion' %}"
+                            class="nav__link {% if current_link == 1 %} nav__link_current {% endif %}">Опрос</a>
+                    </li>
+                    <li class="nav__item dropdown">
+                        <button href=""
+                            class="nav__link dropdown__btn {% if current_link == 2 %} nav__link_current {% endif %}">Услуги<svg
+                                version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                                xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 386.257 386.257"
+                                style="enable-background:new 0 0 386.257 386.257;" xml:space="preserve">
+                                <polygon points="0,96.879 193.129,289.379 386.257,96.879 " />
+                            </svg></button>
+                        <ul class="sub-nav__list dropdown__list">
+                            <li class="sub-nav__item"><a href="{% url 'services' %}" class="sub-nav__link">Стоимость</a>
+                            </li>
+                            <li class="sub-nav__item"><a href="" class="sub-nav__link">Отзывы</a></li>
+                        </ul>
+                    </li>
+                    {% if request.user.is_authenticated %}
+                        <li class="nav__item">
+                        <a href="{% url 'logout' %}"
+                            class="nav__link">Выйти</a>
+                        </li>
+                    {% else %}
+                         <li class="nav__item">
+                            <a href="{% url 'login' %}"
+                                class="nav__link">Войти</a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    {% block content %}
+    {% endblock %}
+    {% if is_show_footer != False %}
+        <footer class="footer">
+            <div class="container">
+                <div class="footer__top">
+                    <div class="footer__column">
+                        <h5 class="footer__column-title">Свяжитесь с нами</h5>
+                        <ul class="footer__list">
+                            <li class="footer__list-item"><a href="#" class="footer__link">Адрес: <br> 1827 Nickel Road, Los
+                                    Angeles, CA, 90017, United States</a></li>
+                            <li class="footer__list-item"><a href="#" class="footer__link">Телефон: <br> (414) 567 -
+                                    2109</a></li>
+                            <li class="footer__list-item"><a href="#" class="footer__link">Email: <br>
+                                    contact@cleaning.com</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer__column">
+                        <h5 class="footer__column-title">Время работы</h5>
+                        <ul class="footer__list">
+                            <li class="footer__list-item"><span>С понедельника по пятницу:</span> <br> 6.00 - 21.00</li>
+                            <li class="footer__list-item"><span>Суббота и воскресенье:</span> <br> 8.00 - 20.00 </li>
+                        </ul>
+                    </div>
+                    <div class="footer__column">
+                        <span class="footer__subtitle">Звоните по номеру:</span>
+                        <a href="tel:+4145672109" class="footer__phone">(414) 567 - 2109</a>
+                        <button class="btn btn_size_m footer__btn">Оставить заявку!</button>
+                    </div>
+                </div>
+                <div class="footer__bottom">
+                    <div class="footer__logo">
+                        <img src="{% static 'img/logo.svg' %}" alt="logo">
+                    </div>
+                    <div class="footer__copy">
+                        <span class="footer__copy-name">Cleaning X</span>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    {% endif %}
+
+    <script src="{% static 'js/app.js' %}"></script>
+</body>
+
+</html>
